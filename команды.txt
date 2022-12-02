@@ -1,0 +1,13 @@
+composer create-project symfony/skeleton lesnaia
+(не забываем перейти в созданную папку)
+composer require twig
+composer require annotations
+composer require profiler (отладка)
+composer require logger (система логгирования)
+composer require monolog/monolog (использование логгера в контроллере через LoggerInterface)
+!!!!composer require doctrine(не делали)
+composer require symfony/form
+
+Базы данных
+composer require symfony/orm-pack
+composer require --dev symfony/maker-bundle
