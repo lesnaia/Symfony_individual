@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title%} Cars {% endblock %}
+
+{% block body %}
+
+  {% if cars %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Brand</th>
+		  <th>Model</th>
+		  <th>Year</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%  for car in cars %}
+          <tr>
+            <td>{{ car.brandId.name }}</td>
+			<td>{{ car.model }}</td>
+			<td>{{ car.year }}</td>
+            <td>
+              <a href="/car/{{ car.id }}" class="btn btn-dark">Show</a>
+            </td>
+            <td>
+              <a href="/car/update/{{ car.id }}" class="btn btn-info">Update</a>
+            </td>
+            <td>
+              <a href="/car/delete/{{ car.id }}" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+	<form action="/car">
+   		 <input type="submit" value="Создать запись" />
+	</form>
+  {% else %}
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}  <p>Описание машины</p>  {% endblock %}
+
+{% block body %}
+  <h1>{{ car.brandId.name }}</h1>
+		<p>{{ car.model }}</p>
+		<p>{{ car.year }}</p>
+<hr>
+  <a href="/cars" class="btn btn-light">Go Back</a>
+{% endblock %}

@@ -11,3 +11,140 @@ composer require symfony/form
 Базы данных
 composer require symfony/orm-pack
 composer require --dev symfony/maker-bundle
+======================================================================
+php bin/console make:entity
+
+ Class name of the entity to create or update (e.g. OrangeKangaroo):
+ > Brand
+
+ created: src/Entity/Brand.php
+ created: src/Repository/BrandRepository.php
+
+ Entity generated! Now let's add some fields!
+ You can always add more fields later manually or by re-running this command.
+
+ New property name (press <return> to stop adding fields):
+ > name
+
+ Field type (enter ? to see all types) [string]:
+ >
+
+ Field length [255]:
+ > 50
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Brand.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >
+
+===========================================================================
+php bin/console make:entity
+
+ Class name of the entity to create or update (e.g. GentlePopsicle):
+ > Car
+
+ created: src/Entity/Car.php
+ created: src/Repository/CarRepository.php
+
+ Entity generated! Now let's add some fields!
+ You can always add more fields later manually or by re-running this command.
+
+ New property name (press <return> to stop adding fields):
+ > model
+
+ Field type (enter ? to see all types) [string]:
+ >
+
+ Field length [255]:
+ > 50
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Car.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > year
+
+ Field type (enter ? to see all types) [string]:
+ >
+
+ Field length [255]:
+ > 4
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Car.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > brand_id
+
+ Field type (enter ? to see all types) [integer]:
+ > relation
+
+ What class should this entity be related to?:
+ > Brand
+
+What type of relationship is this?
+ ------------ -----------------------------------------------------------------
+  Type         Description
+ ------------ -----------------------------------------------------------------
+  ManyToOne    Each Car relates to (has) one Brand.
+               Each Brand can relate to (can have) many Car objects.
+
+  OneToMany    Each Car can relate to (can have) many Brand objects.
+               Each Brand relates to (has) one Car.
+
+  ManyToMany   Each Car can relate to (can have) many Brand objects.
+               Each Brand can also relate to (can also have) many Car objects.
+
+  OneToOne     Each Car relates to (has) exactly one Brand.
+               Each Brand also relates to (has) exactly one Car.
+ ------------ -----------------------------------------------------------------
+
+ Relation type? [ManyToOne, OneToMany, ManyToMany, OneToOne]:
+ > ManyToOne
+
+ Is the Car.brand_id property allowed to be null (nullable)? (yes/no) [yes]:
+ > no
+
+ Do you want to add a new property to Brand so that you can access/update Car objects from it - e.g. $brand->getCars()? (yes/no) [yes]:
+ > yes
+
+ A new property will also be added to the Brand class so that you can access the related Car objects from it.
+
+ New field name inside Brand [cars]:
+ >
+
+ Do you want to activate orphanRemoval on your relationship?
+ A Car is "orphaned" when it is removed from its related Brand.
+ e.g. $brand->removeCar($car)
+
+ NOTE: If a Car may *change* from one Brand to another, answer "no".
+
+ Do you want to automatically delete orphaned App\Entity\Car objects (orphanRemoval)? (yes/no) [no]:
+ > no
+
+ updated: src/Entity/Car.php
+ updated: src/Entity/Brand.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >
+====================================================================================
+php bin/console make:migration
+
+  Success!
+
+php bin/console doctrine:migrations:migrate
+
+ WARNING! You are about to execute a migration in database "individual_bd" that could result in schema changes and data loss. 
+Are you sure you wish to continue? (yes/no) [yes]:
+ >
+
+====================================================================================
+
+php bin/console make:controller CarController
